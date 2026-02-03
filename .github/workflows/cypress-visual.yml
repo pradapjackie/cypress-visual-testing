@@ -10,6 +10,8 @@ on:
 jobs:
   cypress-visual:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write  # Required to push to gh-pages for report deployment
     steps:
       - name: Checkout
         uses: actions/checkout@v4
