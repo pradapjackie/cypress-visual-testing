@@ -46,6 +46,14 @@ npm run cy:run:base
 npm run cy:open
 ```
 
+**Generate HTML comparison report** (after running tests):
+
+```bash
+npm run cy:report
+```
+
+Opens `cypress/snapshots/visual-report.html` in your browser for side-by-side baseline vs. actual vs. diff view.
+
 ## Viewport Resolutions
 
 | Resolution | Width × Height | Device type |
@@ -62,6 +70,10 @@ The workflow in `.github/workflows/cypress-visual.yml` runs on:
 - Pull requests to `main` or `master`
 
 **Important**: Baseline images in `cypress/snapshots/base/` must be committed to the repo for CI to pass.
+
+**View the report on CI:**
+- **Download:** Get the `visual-report` artifact → extract → open `visual-report.html`
+- **View online:** Enable GitHub Pages (Settings → Pages → Source: Deploy from branch → Branch: `gh-pages`). After each run, the report is published at `https://<username>.github.io/<repo>/report/visual-report.html`
 
 On failure, the workflow uploads:
 

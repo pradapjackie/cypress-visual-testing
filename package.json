@@ -6,7 +6,8 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:run:base": "cypress run --env visualRegressionType=base",
-    "cy:run:regression": "cypress run --env visualRegressionType=regression"
+    "cy:run:regression": "cypress run --env visualRegressionType=regression",
+    "cy:report": "node scripts/generate-visual-report.js"
   },
   "keywords": [
     "cypress",

@@ -27,6 +27,35 @@ jobs:
           name: cypress-screenshots
           path: cypress/snapshots
 
+      - name: Generate HTML report
+        run: npm run cy:report
+
+      - name: Upload visual report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-report
+          path: cypress/snapshots
+
+      - name: Report summary
+        if: always()
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          REPORT_URL="https://${GITHUB_REPOSITORY%%/*}.github.io/${REPO_NAME}/report/visual-report.html"
+          echo "## 📊 Visual Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📥 **Download:** Get the \`visual-report\` artifact → extract → open \`visual-report.html\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 **View online:** [Open report](${REPORT_URL}) (enable GitHub Pages: Settings → Pages → Source: GitHub Actions)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Deploy report to GitHub Pages
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: cypress/snapshots
+          destination_dir: report
+
       - name: Upload videos
         uses: actions/upload-artifact@v4
         if: always()

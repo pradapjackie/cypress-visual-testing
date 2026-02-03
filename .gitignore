@@ -1,6 +1,7 @@
 node_modules/
 cypress/snapshots/actual/
 cypress/snapshots/diff/
+cypress/snapshots/visual-report.html
 cypress/videos/
 .DS_Store
 *.log
