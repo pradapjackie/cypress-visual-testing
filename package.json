@@ -1,0 +1,22 @@
+{
+  "name": "cypress-visual-testing",
+  "version": "1.0.0",
+  "description": "Cypress visual testing framework for multiple viewport resolutions",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:base": "cypress run --env visualRegressionType=base",
+    "cy:run:regression": "cypress run --env visualRegressionType=regression"
+  },
+  "keywords": [
+    "cypress",
+    "visual-testing",
+    "regression"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.15.0",
+    "cypress-visual-regression": "^5.3.0"
+  }
+}
